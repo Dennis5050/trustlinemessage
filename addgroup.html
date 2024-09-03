@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Group</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        #content {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .card-footer {
+            background-color: #f1f1f1;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <section id="content" class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <form action="https://www.trustlinecomm.co.ke/groups/new" method="post">
+                    <input name="_token" type="hidden" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-gear"></i> New Group
+                            </h5>
+                            <a href="https://www.trustlinecomm.co.ke/groups/manage" class="btn btn-sm btn-light">
+                                <i class="bi bi-people-fill"></i> List Groups
+                            </a>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="new_group" class="form-label">Group Name *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-people-fill"></i></span>
+                                    <input type="text" id="new_group" class="form-control" placeholder="Type group name" name="group_name" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="group_desc" class="form-label">Group Description</label>
+                                <textarea class="form-control" id="group_desc" rows="5" name="group_desc" placeholder="Describe the group here"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-plus-circle"></i> Add Group
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

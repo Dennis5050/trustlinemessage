@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Exam Results</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 30px; /* Added padding to the top */
+    }
+    #content {
+      max-width: 1000px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-y: auto; /* Enable vertical scrolling */
+      max-height: 90vh; /* Set maximum height to make the content scrollable */
+    }
+    .panel-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .form-section {
+      margin-bottom: 30px;
+    }
+    .form-section h5 {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content" class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card" id="spy2">
+          <div class="card-header bg-primary text-white">
+            <h5 class="card-title">
+              <i class="fa fa-envelope"></i> Send Exam Results
+            </h5>
+          </div>
+
+          <div class="card-body">
+            <p>
+              Sending exam results to parents is a crucial task. Please ensure all the required details are accurately provided to avoid any errors. Always save your file in <strong>.CSV</strong> format. The CSV file should contain the required information such as school details, student details, and exam results.
+            </p>
+
+            <!-- School Information Section -->
+            <div class="form-section">
+              <h5><i class="fa fa-school"></i> School Information</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="school-name" class="form-label">School Name</label>
+                  <input type="text" class="form-control" id="school-name" placeholder="Enter school name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="school-contact" class="form-label">School Contact Number</label>
+                  <input type="text" class="form-control" id="school-contact" placeholder="Enter contact number" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Details Section -->
+            <div class="form-section">
+              <h5><i class="fa fa-user-graduate"></i> Student Details</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="student-name" class="form-label">Student Name</label>
+                  <input type="text" class="form-control" id="student-name" placeholder="Enter student name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="parent-phone" class="form-label">Parent's Phone Number</label>
+                  <input type="text" class="form-control" id="parent-phone" placeholder="Enter parent's phone number" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exam Results Section -->
+            <div class="form-section">
+              <h5><i class="fa fa-file-alt"></i> Exam Results</h5>
+              <div class="row g-3">
+                <div class="col-md-12">
+                  <label for="exam-file" class="form-label">Upload Exam Results (CSV File)</label>
+                  <input type="file" class="form-control" id="exam-file" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message Sending Options -->
+            <div class="form-section">
+              <h5><i class="fa fa-paper-plane"></i> Send Results Via</h5>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="send-option" id="send-sms" value="sms" checked>
+                <label class="form-check-label" for="send-sms">
+                  SMS
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="send-option" id="send-whatsapp" value="whatsapp">
+                <label class="form-check-label" for="send-whatsapp">
+                  WhatsApp
+                </label>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="nav nav-pills nav-fill mb-4" id="pills-tab" role="tablist">
+              <a class="nav-link active" id="step1-tab" data-bs-toggle="pill" href="#step1" role="tab" aria-controls="step1" aria-selected="true">
+                Step 1 - Upload the Excel file
+              </a>
+              <a class="nav-link" id="step2-tab" data-bs-toggle="pill" href="#step2" role="tab" aria-controls="step2" aria-selected="false">
+                Step 2 - Review and Edit
+              </a>
+              <a class="nav-link" id="step3-tab" data-bs-toggle="pill" href="#step3" role="tab" aria-controls="step3" aria-selected="false">
+                Step 3 - Confirm and Send
+              </a>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+              <!-- Step 1 - Upload Excel File -->
+              <div class="tab-pane fade show active" id="step1" role="tabpanel" aria-labelledby="step1-tab">
+                <p>Upload the CSV file containing the student exam results:</p>
+                <form enctype="multipart/form-data" action="https://www.ujumbesms.co.ke/messages/exam" method="POST">
+                  <input name="_token" type="hidden" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <input type="file" class="form-control" name="data-file" aria-label="Upload file" required>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="submit" class="btn btn-primary w-100">
+                        <i class="fa fa-upload"></i> Upload File
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Step 2 - Review and Edit -->
+              <div class="tab-pane fade" id="step2" role="tabpanel" aria-labelledby="step2-tab">
+                <p>Review and edit the uploaded exam results. Ensure all the data is correct before proceeding.</p>
+                <!-- Placeholder for review table -->
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Student Name</th>
+                      <th>Parent's Phone Number</th>
+                      <th>Exam Results</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Rows will be populated dynamically based on uploaded CSV -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Step 3 - Confirm and Send -->
+              <div class="tab-pane fade" id="step3" role="tabpanel" aria-labelledby="step3-tab">
+                <p>Confirm the details below and click "Send Results" to dispatch the exam results to the parents.</p>
+                <form action="" method="POST">
+                  <input name="_token" type="hidden" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+                  <button type="submit" class="btn btn-success w-100">
+                    <i class="fa fa-paper-plane"></i> Send Results
+                  </button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

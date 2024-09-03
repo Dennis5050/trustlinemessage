@@ -1,0 +1,231 @@
+<style>
+    /* General panel styling */
+    .panel {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .panel-heading {
+        background-color: #007bff;
+        color: #fff;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        border-radius: 8px 8px 0 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .panel-title {
+        display: flex;
+        align-items: center;
+    }
+
+    .panel-title .glyphicons {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+
+    .panel-body {
+        padding: 20px;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .btn {
+        border-radius: 4px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .btn-sm {
+        padding: 6px 12px;
+    }
+
+    .btn-default {
+        background-color: #f8f9fa;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        border: 1px solid #28a745;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+
+    .input-sm {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .daterangepicker {
+        position: absolute;
+        z-index: 9999;
+    }
+    
+    .daterangepicker td.available.active,
+    .daterangepicker li.active,
+    .daterangepicker li:hover {
+        color: #007bff !important;
+        font-weight: bold;
+    }
+
+    .column-message {
+        width: 60%;
+    }
+
+    .showing_records {
+        font-size: 14px;
+        color: #333;
+    }
+</style>
+
+<section id="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <span class="panel-title">
+                        <span class="glyphicons glyphicons-charts"></span> Billing History
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <input type="submit" style="display: none;">
+                        <table class="table table-striped" id="credits_usage_grid">
+                            <thead>
+                                <tr>
+                                    <td colspan="6">
+                                        <span>Records per page</span>
+                                        <select class="form-control input-sm grids-control-records-per-page" style="display: inline; width: 80px; margin-right: 10px" name="credits_usage_grid[filters][records_per_page]">
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <option value="300">300</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <span data-role="columns-hider" id="credits_usage_grid-columns_hider-container">
+                                            <button id="credits_usage_grid-columns_hider-btn" class="btn btn-sm btn-default" data-toggle="popover" type="button" data-placement="bottom" title="">
+                                                <span class="glyphicon glyphicon-eye-open"></span> Columns <span class="caret"></span>
+                                            </button>
+                                            <div id="credits_usage_grid-columns_hider-menu-content" style="display: none">
+                                                <ul style="list-style-type: none; padding: 0; margin: 0">
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="all">
+                                                            <b>Show/Hide all</b>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="id" checked>
+                                                            ID
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="total_credits" checked>
+                                                            Credits Deducted
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="user_rate" checked>
+                                                            Rate
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="amount" checked>
+                                                            Amount (Ksh)
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="created_at" checked>
+                                                            Date
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="queue_identifier" checked>
+                                                            Remarks
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                                        <a href="https://www.ujumbesms.co.ke/credits/usage?credits_usage_grid%5Bcsv%5D=1" class="btn btn-sm btn-default">
+                                            <span class="glyphicon glyphicon-export"></span> CSV Export
+                                        </a>
+                                        <a href="https://www.ujumbesms.co.ke/credits/usage?credits_usage_grid%5Bxls%5D=1" class="btn btn-sm btn-default">
+                                            <span class="glyphicon glyphicon-export"></span> Excel Export
+                                        </a>
+                                        <button class="btn btn-success btn-sm">
+                                            <span class="glyphicon glyphicon-refresh"></span> Filter
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="column-id">ID</th>
+                                    <th class="column-total_credits">Credits Deducted</th>
+                                    <th class="column-user_rate">Rate</th>
+                                    <th class="column-total_credits">Amount (Ksh)</th>
+                                    <th class="column-created_at">Date
+                                        <small style="white-space: nowrap">
+                                            <a title="Sort ascending" href="https://www.ujumbesms.co.ke/credits/usage?credits_usage_grid%5Bsort%5D%5Bcreated_at%5D=ASC">▲</a>
+                                            <a title="Sort descending" class="text-success">▼</a>
+                                        </small>
+                                    </th>
+                                    <th class="column-queue_identifier">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="column-id">3260833</td>
+                                    <td class="column-total_credits">1</td>
+                                    <td class="column-user_rate">0.75</td>
+                                    <td class="column-total_credits">0.75</td>
+                                    <td class="column-created_at">Sat, Aug 24, 2024 5:08 PM</td>
+                                    <td class="column-queue_identifier">Sending messages to groups</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="pull-right">
+                                            <span class="showing_records">Showing records 1—1 of 1</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

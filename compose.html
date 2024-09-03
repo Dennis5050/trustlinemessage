@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="content" class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <form class="row g-3" action="https://www.ujumbesms.co.ke/compose" method="post">
+                <input name="_token" type="hidden" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+                <input type="hidden" name="schedule_data" class="schedule_data" id="schedule_data">
+
+                <div class="panel mb-4">
+                    <div class="panel-heading d-flex justify-content-between align-items-center">
+                        <h5 class="panel-title mb-0">
+                            <i class="glyphicon glyphicon-envelope"></i> Compose Message
+                        </h5>
+                        <a class="btn btn-primary btn-sm" href="https://www.ujumbesms.co.ke/messages/custom">
+                            <i class="glyphicon glyphicon-envelope"></i> Send From Excel
+                        </a>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="fa fa-info me-2"></i>
+                            Your messages have been queued for sending. <a href="https://www.ujumbesms.co.ke/messages/manage">View the progress here</a>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 d-none">
+                                <label class="form-label" for="">Select Numbers</label>
+                                <a class="btn btn-primary" href="https://www.ujumbesms.co.ke/messages/address_book_old">
+                                    <i class="glyphicon glyphicon-envelope"></i> Send From Phone Book
+                                </a>
+                                <input type="hidden" name="phone_book_group_id_" value="" class="phone_book_group_id_">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label" for="tagmanager">Type Numbers</label>
+                                <input type="text" id="tagmanager" class="form-control" placeholder="Type multiple phone numbers separated by a comma!" name="phone_number">
+                                <div class="tag-container tags"></div>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="multiselect2">Contact Groups</label>
+                            <div class="d-flex align-items-center">
+                                <div class="btn-group me-3">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select your contact groups
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!-- Dropdown items here -->
+                                    </ul>
+                                </div>
+                                <a href="https://www.trustlinecomm.co.ke/groups/new" class="btn btn-outline-primary">
+                                    New Group
+                                </a>
+                            </div>
+                        </div>
+                        
+
+                        <hr class="my-3">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="multiselect1">Message Template</label>
+                            <div class="d-flex align-items-center">
+                                <div class="btn-group me-3">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select a message template
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!-- Dropdown items here -->
+                                    </ul>
+                                </div>
+                                <a href="https://www.trustlinecomm.co.ke/messages/templates/new" class="btn btn-outline-primary">
+                                    New Message Template
+                                </a>
+                            </div>
+                            <span class="form-text text-muted">
+                                <small>Select an existing template or create a new one.</small>
+                            </span>
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            <label class="form-label" for="textArea1">Your Message</label>
+                            <textarea class="form-control" id="textArea1" rows="4" name="message_content"></textarea>
+                            <div class="form-text">1400 characters left</div>
+                            <div class="form-text">1 Message(s)</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkboxDefault3" name="salutation">
+                                <label class="form-check-label" for="checkboxDefault3">
+                                    Salutation
+                                </label>
+                                <div class="form-text">
+                                    <em>Include "<span class="salutation_text">Dear</span> Client Name" in the message</em>
+                                    &nbsp; <a class="text-decoration-underline" href="https://www.trustlinecomm.co.ke/user/profile/update_salutation">Click to Edit Salutation</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Send Via</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="send_via" id="sendSms" value="sms" checked>
+                                <label class="form-check-label" for="sendSms">
+                                    <span class="badge bg-primary text-light">SMS</span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="send_via" id="sendWhatsApp" value="whatsapp">
+                                <label class="form-check-label" for="sendWhatsApp">
+                                    <span class="badge bg-success text-light">WhatsApp</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="input-group me-2 flex-grow-1">
+                                <input id="schedule_date_picker" type="text" class="form-control" name="schedule_date" placeholder="Schedule for later dispatch">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i> Schedule</span>
+                            </div>
+                            <button class="btn btn-primary custom-button" type="submit">
+                                <i class="glyphicon glyphicon-forward"></i> Send Message
+                            </button>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+
+            <div id="test-modal" class="modal fade" tabindex="-1" aria-labelledby="test-modal-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender ID Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .text-blue-bg {
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            padding: 10px 20px; /* Padding for better readability */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Fit text */
+            text-decoration: none; /* Remove underline */
+        }
+        .text-blue-bg:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: none;
+            border-top-left-radius: calc(1rem - 1px);
+            border-top-right-radius: calc(1rem - 1px);
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .form-text {
+            font-size: 0.875rem;
+        }
+        .login-links a {
+            margin-right: 15px;
+        }
+        .section-divider span {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .g-recaptcha {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" class="container mt-5">
+        <!-- Topbar Links -->
+        <div class="row mb-4">
+            <div class="col-6">
+                <a href="main.html" title="Home" class="text-blue fs-2 fw-bold text-shadow">
+                    trustlinecomm
+                </a>
+            </div>
+            <div class="col-6 text-end">
+                <div class="login-links">
+                    <a href="main.html" class="text-decoration-none" title="Home">Home</a>
+                    <span class="mx-2 text-muted">|</span>
+                    <a href="signin.html" class="text-decoration-none" title="Sign In">Sign In</a>
+                    <span class="mx-2 text-muted">|</span>
+                    <a href="create.html" class="text-decoration-none" title="Register">Register</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sender ID Application Form -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Sender ID Application</h3>
+            </div>
+            <form role="form" method="POST" action="https://www.ujumbesms.co.ke/branding/sender_id" id="register_sender_id" class="form">
+                <input type="hidden" name="_token" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h2 class="text-danger">Sender ID Application</h2>
+                        <p>Request for your Safaricom or Airtel sender ID here!</p>
+                        <p>Please provide us with the organization's details as below.
+                            This will help us procure the service from the mobile operators.
+                            The process takes about 5 working days. For any questions, do not hesitate to contact us on <a href="mailto:support@ujumbesms.co.ke" class="text-primary">trustlinecomm.co.ke</a>
+                            or call us on <a href="tel:+254790619043" class="text-primary">+25468217067</a>
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="business_name" class="form-label">Full Business Name</label>
+                                <input type="text" name="business_name" id="business_name" class="form-control" placeholder="Business Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="business_location" class="form-label">Business Location</label>
+                                <input type="text" name="business_location" id="business_location" class="form-control" placeholder="Business Location (Building/Apartment)" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="business_address" class="form-label">Business Address</label>
+                                <input type="text" name="business_address" id="business_address" class="form-control" placeholder="Address (P.O.Box)" required>
+                            </div>
+                            <div class="mb-3" style="display: none;">
+                                <label for="website" class="form-label">Website</label>
+                                <input type="url" name="website" id="website" class="form-control" placeholder="Your Business Website">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="contact_person" class="form-label">Contact Person</label>
+                                <input type="text" name="contact_person" id="contact_person" class="form-control" placeholder="Contact Person" required>
+                            </div>
+                            <div class="mb-3" style="display: none;">
+                                <label for="contact_person_designation" class="form-label">Designation</label>
+                                <input type="text" name="contact_person_designation" id="contact_person_designation" class="form-control" placeholder="Contact Person Designation">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone_no" class="form-label">Phone Number</label>
+                                <input type="tel" name="phone_no" id="phone_no" class="form-control" placeholder="Contact Phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="preffered_sender_id" class="form-label">Preferred Sender ID</label>
+                                <input type="text" name="preffered_sender_id" id="preffered_sender_id" class="form-control" placeholder="Your Sender ID" required>
+                                <small class="form-text text-muted">Should be a maximum of 11 alphanumeric characters without spaces.</small>
+                            </div>
+                            <div class="mb-3">
+                                <div class="g-recaptcha" data-sitekey="6LdRswgTAAAAAMaeX7Hhn1gCSI2l2SyaBC2asZ-I"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-list"></i> Submit Request &gt;&gt;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

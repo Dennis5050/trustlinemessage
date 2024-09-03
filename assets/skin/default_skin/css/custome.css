@@ -1,0 +1,271 @@
+body {
+    min-height: 200px;
+    color: #333;
+}
+
+.address_book .multiselect-container.dropdown-menu {
+    display: block;
+    position: static;
+}
+
+small {
+    font-weight: 100;
+}
+
+.h110 {
+    height: 110px;
+}
+
+.icon-bg {
+    right: 20px;
+}
+
+.opensans {
+    font-family: 'Open Sans', sans-serif !important;
+    color: #666;
+}
+
+.twitter-typeahead {
+    display: block !important;
+}
+
+.navbar-branding {
+    background-color: #1e8c70;
+}
+
+.btn, .nav-list li a {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.breadcrumb > li {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.panel-heading {
+    height: auto;
+    padding: 20px;
+}
+
+.panel-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.panel-title > .fa, .panel-title > .glyphicon, .panel-title > .glyphicons, .panel-title > .imoon {
+    font-size: 32px;
+    margin-right: 15px;
+    top: 7px;
+}
+
+.button_long {
+    width: 350px;
+    text-align: left;
+}
+
+.panel-tabs > li.active > a,
+.panel-tabs > li.active > a:hover,
+.panel-tabs > li.active > a:focus {
+    border-top: 1px solid #ddd;
+}
+
+.panel-tabs > li:first-child > a {
+    border-left: none;
+}
+
+.panel-tabs > li:first-child.active > a {
+    border-left: 1px solid #ddd;
+}
+
+.has-info .input-group-addon {
+    background: 0 0;
+}
+
+.button_border {
+    border-color: #66c1e2;
+}
+
+.multiselect-container .radio input {
+    display: none;
+}
+
+.multiselect-container.dropdown-menu > li > a:hover {
+    background: #adbbd6;
+    color: #fff;
+}
+
+.admin-form, .tm-tag {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.sidebar-menu > li > a > span:nth-child(2) {
+    font-weight: 400;
+}
+
+#sidebar_right {
+    width: 160px;
+}
+
+#topbar.affix {
+    margin-right: 160px;
+}
+
+.topbar-menu-link span:nth-child(1) {
+    margin-right: 3px;
+}
+
+.navbar-branding a.navbar-brand {
+    font-size: 30px;
+}
+
+.sidebar-menu > li a {
+    font-size: 14px;
+}
+
+.panel-controls > a {
+    width: auto;
+    font-size: 24px;
+}
+
+.panel {
+    border: 0;
+}
+
+.sidebar-menu > li.active > a {
+    background: #444;
+}
+
+.sb-r-o #content_wrapper {
+    margin-right: 160px;
+}
+
+.sb-r-c #topbar {
+    margin-right: 0;
+}
+
+#topbar.affix + #content {
+    margin-top: 31px;
+}
+
+h1, h2 {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.has-primary .help-block,
+.has-primary .control-label,
+.has-primary .radio,
+.has-primary .checkbox,
+.has-primary .radio-inline,
+.has-primary .checkbox-inline,
+.has-primary .append-icon {
+    color: #666;
+}
+
+.has-info .help-block,
+.has-info .control-label,
+.has-info .radio,
+.has-info .checkbox,
+.has-info .radio-inline,
+.has-info .checkbox-inline,
+.has-info .append-icon {
+    color: #666;
+}
+
+.panel-body, .panel-heading, .panel-footer, .panel-menu {
+    border: 1px solid #d3d3d3;
+}
+
+.panel-menu {
+    border: 1px solid #eee;
+    border-right: 1px solid #d3d3d3;
+    border-left: 1px solid #d3d3d3;
+}
+
+#main:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #e9e9e9;
+}
+
+@media (min-width: 1100px) {
+    #content {
+        padding: 35px 40px 50px 41px;
+    }
+}
+
+.alert ul li {
+    list-style: none;
+}
+
+.help-block {
+    color: #a6a6a6 !important;
+}
+
+.filter .btn.multiselect-clear-filter {
+    padding: 9px 12px;
+    border: 1px solid #66c1e2;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    background: #66c1e2;
+}
+
+.left .btn-group {
+    float: left;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .button_long {
+        width: 200px;
+    }
+
+    #topbar {
+        display: none;
+    }
+
+    #topbar.affix + #content {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+    .button_long {
+        width: 200px;
+    }
+
+    #topbar.affix + #content {
+        margin-top: 51px;
+    }
+
+    #topbar.affix {
+        margin-right: 0;
+    }
+}
+
+@media print {
+    .printable-receipt {
+        width: 41.6%;
+        border: 1px solid #ddd;
+    }
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.helper_text {
+    color: #777;
+}

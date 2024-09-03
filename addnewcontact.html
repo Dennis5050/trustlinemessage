@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .panel {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .panel-heading {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+        }
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        .panel-body {
+            padding: 20px;
+        }
+        .form-group label {
+            font-weight: 500;
+        }
+        .form-control {
+            border-radius: 4px;
+        }
+        .panel-footer {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        .help-block {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form-horizontal" role="form" action="https://www.trustlinecomm.co.ke/contacts/new" method="post">
+            <input name="_token" type="hidden" value="HlpLkUgPADp15akKHJC847WVzSPCXZ0K5yeTbK1D">
+            <div class="panel">
+                <div class="panel-heading">
+                    <span class="panel-title">
+                        <i class="bi bi-plus-circle"></i> New Contact
+                    </span>
+                    <ul class="nav nav-tabs panel-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://www.trustlinecomm.co.ke/contacts/new" aria-expanded="true">Quick Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.trustlinecomm.co.ke/contacts/upload" aria-expanded="false">Upload CSV/Excel</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane active">
+                            <div class="mb-3 row">
+                                <label for="full_name" class="col-md-2 col-form-label">Full Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="full_name" class="form-control" placeholder="Client Name/Student Name" name="full_name">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="phone_no" class="col-md-2 col-form-label">Phone Number *</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="phone_no" class="form-control" placeholder="Required" name="phone_no">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="admission_no" class="col-md-2 col-form-label">Admission No.</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-list"></i></span>
+                                        <input type="text" id="admission_no" class="form-control" placeholder="Admission No." name="admission_no">
+                                    </div>
+                                    <span class="help-block mt-2">
+                                        Admission no applies for schools. Enter the student name and corresponding admission.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-md-2 col-form-label">Email</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" id="email" class="form-control" placeholder="Email address if available" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="multiselect2" class="col-md-2 col-form-label">Contact Groups</label>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="multiselect2" multiple="multiple">
+                                        <!-- Options here -->
+                                    </select>
+                                    <span class="help-block mt-2">
+                                        If you do not select a group, the contact will be placed in your "Personal" phone-book group.
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="help-block mt-2">
+                                        <a href="https://www.trustlinecomm.co.ke/groups/new">New Group</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab-pane">
+                            <p>Upload multiple contacts from a CSV or Excel file. Ensure that your CSV file follows the below structure.</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-save"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

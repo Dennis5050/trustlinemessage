@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Contacts</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        #content {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: none;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+
+        .card-header .nav-link {
+            color: #fff;
+        }
+
+        .card-header .nav-link.active {
+            background-color: #0056b3;
+            border-radius: 0.5rem;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        .form-control {
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .form-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+
+        /* Add padding to prevent filling entire height */
+        .container {
+            padding-bottom: 20px;
+        }
+
+        /* Make content scrollable */
+        #content {
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="content" class="container p-4 bg-white shadow-sm rounded">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="card-title">
+                            <i class="bi bi-gear"></i> Upload Contacts
+                        </span>
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.ujumbesms.co.ke/contacts/new">Quick Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="https://www.ujumbesms.co.ke/contacts/upload">Upload CSV/Excel</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div id="tab2" class="tab-pane fade show active">
+                                <p>Upload multiple contacts from a CSV or Excel file. Ensure that your CSV file follows the below structure.</p>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Number <span style="color: red; font-size: 10px">*required</span></th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Admission No</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="https://www.ujumbesms.co.ke/assets/contacts_template.csv" class="btn btn-secondary">
+                                            <i class="bi bi-cloud-download"></i> Download Sample
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p>Click browse to get the file then upload</p>
+                                <form class="form-horizontal" enctype="multipart/form-data" action="https://www.ujumbesms.co.ke/contacts/upload" method="POST">
+                                    <input name="_token" type="hidden" value="UTlX0l1plSPJfGEsrkaDAOgQfs0aNN57yFEUsnbv">
+                                    <div class="row mb-3">
+                                        <label for="contacts_file" class="col-md-2 col-form-label">Select file</label>
+                                        <div class="col-md-5">
+                                            <input type="file" class="form-control" name="contacts_file" id="contacts_file">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="multiselect2" class="col-md-2 col-form-label">Select an existing Group</label>
+                                        <div class="col-md-2">
+                                            <select class="form-select" id="multiselect2" multiple="multiple">
+                                                <!-- options go here -->
+                                            </select>
+                                            <span class="form-text mt-1"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-md-2 col-form-label"></label>
+                                        <label for="" class="col-md-1 col-form-label text-center">- OR -</label>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="group_name" class="col-md-2 col-form-label">Create new Group</label>
+                                        <div class="col-md-3">
+                                            <input type="text" id="group_name" class="form-control" placeholder="Enter the group name" name="group_name">
+                                            <span class="form-text mt-1">
+                                                If you do not select or create a group the contacts will be placed in your "Personal" phone-book group
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4 offset-md-2">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="bi bi-arrow-right"></i> &nbsp;Upload File
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

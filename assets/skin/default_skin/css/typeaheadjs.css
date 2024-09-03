@@ -1,0 +1,61 @@
+/* Typeahead input styling */
+span.twitter-typeahead {
+    width: 100%;
+  }
+  
+  /* Ensure typeahead dropdown fits within input group */
+  .input-group span.twitter-typeahead {
+    display: block !important;
+  }
+  
+  /* Dropdown positioning based on input group size */
+  .input-group span.twitter-typeahead .tt-dropdown-menu {
+    top: 32px !important;
+  }
+  
+  .input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
+    top: 44px !important;
+  }
+  
+  .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
+    top: 28px !important;
+  }
+  
+  /* Typeahead query input styling */
+  .tt-query {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+  
+  /* Typeahead hint styling */
+  .tt-hint {
+    color: #999;
+  }
+  
+  /* Dropdown menu styling */
+  .tt-dropdown-menu {
+    width: 100%; /* Adjusted to ensure responsiveness */
+    margin-top: 4px;
+    padding: 4px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Individual suggestion styling */
+  .tt-suggestion {
+    padding: 3px 20px;
+    line-height: 24px;
+  }
+  
+  /* Highlighted suggestion styling */
+  .tt-suggestion.tt-cursor {
+    color: #fff;
+    background-color: #0097cf;
+  }
+  
+  /* Paragraph within suggestion item */
+  .tt-suggestion p {
+    margin: 0;
+  }
+  

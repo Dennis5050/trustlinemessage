@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose Message</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card animated fadeIn">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                <i class="bi bi-envelope"></i> Compose Message
+            </h5>
+            <div class="btn-group">
+                <a class="btn btn-primary btn-sm" href="https://www.ujumbesms.co.ke/messages/custom">
+                    <i class="bi bi-envelope-fill"></i> Send From Excel
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3" style="display: none; visibility: hidden;">
+                <div class="col-md-4">
+                    <label for="phone_book_group" class="form-label">Select Numbers</label>
+                    <a class="btn btn-primary" href="https://www.ujumbesms.co.ke/messages/address_book_old">
+                        <i class="bi bi-journal-bookmark-fill"></i> Send From Phone Book
+                    </a>
+                    <input type="hidden" name="phone_book_group_id_" value="" class="phone_book_group_id_">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <label for="tagmanager" class="form-label">Type Numbers</label>
+                    <input type="text" id="tagmanager" class="form-control" placeholder="Type multiple phone numbers separated by a comma!" name="phone_number" value="">
+                    <input type="hidden" name="hidden-phone_number">
+                    <div class="tag-container tags mt-2"></div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                <label for="multiselect2" class="form-label">Contact Groups</label>
+                <select id="multiselect2" class="form-select" multiple>
+                    <!-- Options go here -->
+                </select>
+                <span class="help-block mt-2"> 
+                    <a href="https://www.trustlinecomm.co.ke/groups/new">New Group</a>
+                </span>
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                <label for="multiselect1" class="form-label">Message Template</label>
+                <select id="multiselect1" class="form-select">
+                    <option value="">Select a message template</option>
+                    <!-- Options go here -->
+                </select>
+                <span class="help-block mt-2"> 
+                    <a href="https://www.ujumbesms.co.ke/messages/templates/new">New Message Template</a>
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label for="textArea1" class="form-label">Your Message</label>
+                <textarea class="form-control" id="textArea1" rows="4" name="message_content"></textarea>
+                <div class="text-muted mt-2">All messages sent will have a mandatory opt-out option <b><u>STOP*456*9*5#</u></b> which has an extra 13 characters!<br>
+                    <a class="popup-modal" href="#test-modal">Read More...</a>
+                </div>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkboxDefault3" name="salutation">
+                <label class="form-check-label" for="checkboxDefault3">Salutation</label>
+                <span class="help-block mt-2">
+                    <em>Include "<span class="salutation_text">Dear</span> Client Name" in the message</em>
+                    &nbsp; 
+                    <a href="https://www.ujumbesms.co.ke/user/profile/update_salutation">Click to Edit Salutation</a>
+                </span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkboxDefault4" name="include_signature">
+                <label class="form-check-label" for="checkboxDefault4">Include Your Default Signature</label>
+                <span class="help-block mt-2">
+                    <em><span class="signature_text">(skysoft/+254768217067)</span></em> 
+                    &nbsp; 
+                    <a href="https://www.ujumbesms.co.ke/messages/edit_signature">Click to Edit Signature</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6 offset-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="schedule_date" placeholder="Schedule for later dispatch">
+                        <span class="input-group-text bg-light cursor-pointer">
+                            <i class="bi bi-calendar"></i> Schedule Message
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100 mt-3 mt-md-0" type="submit">
+                        <i class="bi bi-send"></i> Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

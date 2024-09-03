@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container my-4">
+      <div class="panel panel-default shadow-sm">
+        <div class="panel-heading bg-primary text-white p-3">
+          <span class="panel-title">
+            <span class="glyphicons glyphicons-table"></span> Templates
+          </span>
+        </div>
+        <div class="panel-menu p-3">
+          <div class="row">
+            <div class="ml-auto">
+              <a href="https://www.ujumbesms.co.ke/dashboard" class="btn btn-default mr-2">
+                <span class="fa fa-home pr-2"></span> Dashboard
+              </a>
+              <a href="https://www.ujumbesms.co.ke/compose" class="btn btn-default mr-2">
+                <span class="fa fa-envelope-o pr-2"></span> Compose
+              </a>
+              <a href="https://www.ujumbesms.co.ke/messages/templates/new" class="btn btn-primary">
+                <span class="fa fa-edit pr-2"></span> New Template
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body p-3">
+          <form>
+            <input type="submit" style="display: none;">
+            <div class="table-responsive">
+              <table class="table table-striped" id="messages_template_grid">
+                <thead>
+                  <tr>
+                    <td colspan="4">
+                      <span>Records per page</span>
+                      <select class="form-control form-control-sm d-inline w-auto ml-2 mr-3" name="messages_template_grid[filters][records_per_page]">
+                        <option value="50" selected="selected">50</option>
+                        <option value="100">100</option>
+                        <option value="300">300</option>
+                        <option value="1000">1000</option>
+                      </select>
+                      <span data-role="columns-hider" id="messages_template_grid-columns_hider-container">
+                        <button id="messages_template_grid-columns_hider-btn" class="btn btn-sm btn-default" data-toggle="popover" type="button" data-placement="bottom" data-original-title="" title="">
+                          <span class="glyphicon glyphicon-eye-open"></span> Columns
+                          <span class="caret"></span>
+                        </button>
+                        <div id="messages_template_grid-columns_hider-menu-content" style="display: none">
+                          <ul style="list-style-type: none; padding:0; margin:0">
+                            <li>
+                              <label>
+                                <input type="checkbox" name="all">
+                                <b>Show/Hide all</b>
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type="checkbox" name="title"> Title
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type="checkbox" name="content"> Template Message
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type="checkbox" name="created_at"> Date Created
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type="checkbox" name="actions"> Actions
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                      </span>
+                      <script>
+                        $(function () {
+                          var cookie = {
+                            set: function (name, value, options) {
+                              options = options || {};
+                              var expires = options.expires;
+                              if (typeof expires == "number" && expires) {
+                                var d = new Date();
+                                d.setTime(d.getTime() + expires * 1000);
+                                expires = options.expires = d;
+                              }
+                              if (expires && expires.toUTCString) {
+                                options.expires = expires.toUTCString();
+                              }
+                              value = encodeURIComponent(value);
+                              var updatedCookie = name + "=" + value;
+                              for (var propName in options) {
+                                updatedCookie += "; " + propName;
+                                var propValue = options[propName];
+                                if (propValue !== true) {
+                                  updatedCookie += "=" + propValue;
+                                }
+                              }
+                              document.cookie = updatedCookie;
+                            },
+                            get: function (name) {
+                              var matches = document.cookie.match(new RegExp(
+                                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                              ));
+                              return matches ? decodeURIComponent(matches[1]) : undefined;
+                            }
+                          };
+    
+                          var menu = $('#messages_template_grid-columns_hider-menu-content').html();
+                          var $btn = $('#messages_template_grid-columns_hider-btn');
+                          $btn.popover({
+                            content: menu,
+                            html: true
+                          });
+    
+                          $('body').on('click', function (e) {
+                            if (!$btn.is(e.target) && $btn.has(e.target).length === 0 && $('#messages_template_grid-columns_hider-container>.popover').has(e.target).length === 0) {
+                              $btn.popover('hide');
+                            }
+                          });
+    
+                          var ColumnHider = function (switcherSelector, tableSelector) {
+                            this.switcherSelector = switcherSelector;
+                            this.tableSelector = tableSelector;
+                          };
+                          ColumnHider.prototype.defaultValues = { "title": true, "content": true, "created_at": true, "actions": true };
+                          ColumnHider.prototype.getValues = function () {
+                            var json;
+                            if (!this.values) {
+                              if (json = cookie.get('messages_template_grid-columns_hider-cookie')) {
+                                this.values = JSON.parse(json);
+                              } else {
+                                this.values = this.defaultValues;
+                              }
+                            }
+                            return this.values;
+                          };
+                          ColumnHider.prototype.updateInputs = function () {
+                            var values = this.getValues();
+                            var $input;
+                            for (var name in values) {
+                              if (values.hasOwnProperty(name)) {
+                                $input = $(this.switcherSelector + ' input[name="' + name + '"]');
+                                $input.attr('checked', values[name]);
+                              }
+                            }
+                          };
+    
+                          ColumnHider.prototype.getColumnElements = function (name) {
+                            return $('.column-' + name);
+                          };
+    
+                          ColumnHider.prototype.saveValues = function () {
+                            cookie.set(
+                              'messages_template_grid-columns_hider-cookie',
+                              JSON.stringify(this.getValues()),
+                              { path: '/' }
+                            );
+                          };
+    
+                          ColumnHider.prototype.setValue = function (name, value) {
+                            var me = this;
+                            if (name === 'all') {
+                              $.each(this.getValues(), function (i) {
+                                me.getValues()[i] = value;
+                                $('input[name=' + i + ']').prop('checked', value);
+                                me.updateColumnVisibility(i, value);
+                              });
+                            } else {
+                              this.getValues()[name] = value;
+                              this.updateColumnVisibility(name, value);
+                            }
+                            this.checkAll();
+                          };
+    
+                          ColumnHider.prototype.checkAll = function () {
+                            var checked = true,
+                              me = this;
+                            $.each(this.getValues(), function (i) {
+                              if (i === 'all') return;
+                              checked = me.getValues()[i] && checked;
+                            });
+                            this.getValues()['all'] = checked;
+                            $('input[name=all]').prop('checked', checked);
+                            this.saveValues();
+                          };
+    
+                          ColumnHider.prototype.updateColumnVisibility = function (name, visible) {
+                            var $els = this.getColumnElements(name);
+                            visible ? $els.show(0) : $els.hide(0);
+                          };
+    
+                          ColumnHider.prototype.setupInputs = function () {
+                            var self = this;
+                            var handler = function () {
+                              var checked = $(this).is(':checked');
+                              var name = $(this).attr('name');
+                              self.setValue(name, checked);
+                            };
+                            $(self.switcherSelector + ' input').on('change', handler);
+                          };
+    
+                          ColumnHider.prototype.setup = function () {
+                            var self = this;
+                            $(this.tableSelector).on('shown.bs.popover', function () {
+                              self.setupInputs();
+                              self.updateInputs();
+                            });
+                          };
+                          ColumnHider.prototype.setupTable = function () {
+                            var values = this.getValues();
+                            for (var name in values) {
+                              if (values.hasOwnProperty(name) && !values[name]) {
+                                this.getColumnElements(name).hide(0);
+                              }
+                            }
+                          };
+    
+                          var ch = new ColumnHider(
+                            '#messages_template_grid',
+                            '#messages_template_grid-columns_hider-btn'
+                          );
+                          ch.setup();
+                          ch.saveValues();
+                        });
+                      </script>
+                      <span>
+                        <a href="https://www.ujumbesms.co.ke/messages/templates/manage?messages_template_grid%5Bxls%5D=1" class="btn btn-sm btn-default">
+                          <span class="glyphicon glyphicon-export"></span> Excel Export
+                        </a>
+                      </span>
+                      <button class="btn btn-success btn-sm ml-2">
+                        <span class="glyphicon glyphicon-refresh"></span> Filter
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="column-title">Title</th>
+                    <th class="column-content">Template Message</th>
+                    <th class="column-created_at">
+                      Date Created
+                      <small class="d-block">
+                        <a title="Sort ascending" href="https://www.ujumbesms.co.ke/messages/templates/manage?messages_template_grid%5Bsort%5D%5B
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
